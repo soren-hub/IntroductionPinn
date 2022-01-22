@@ -1,0 +1,3 @@
+notebook
+torch==1.10.0+cu111
+matplotlib==3.5.1
