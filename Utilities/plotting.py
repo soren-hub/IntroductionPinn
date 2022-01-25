@@ -1,11 +1,33 @@
 import matplotlib.pyplot as plt
 from PIL import Image
+import os
+from IPython import display
+from IPython.display import Image
 
-def plot_result_nn(t,u,t_data,u_data,u_pred,epoch):
+def display_gif(path):
+    with open(path,'rb') as f:
+        display(Image(data=f.read(), format='png'))
+        
+
+def mkdir(dir=None,name=None):
+    '''
+    Create a directory in the specified directory.
+    
+    :param dir: the directory to create the new directory in
+    :param name: The name of the directory to be created
+    '''
+    try: 
+        path = os.path.join("./",name) if dir==None else os.path.join(dir,name)
+        os.mkdir(path)
+        print("Directory '% s' created" % name)
+    except FileExistsError:
+        print("Directory '% s' was already created" % name)
+
+def plot_nn_result(t,u,t_data,u_data,u_pred,epoch):
 
     """
     @author: bmoseley
-    Pretty plot training results
+    Pretty plot neural network training results
     """
     plt.figure(figsize=(8,4))
     
@@ -20,10 +42,10 @@ def plot_result_nn(t,u,t_data,u_data,u_pred,epoch):
     plt.text(2.1,0.7,"Training step: %i"%(epoch+1),fontsize="xx-large",color="k")
     plt.axis("off")
     
-def plot_result_discovery(t, u, t_data, u_data, u_pred, epoch, mu, k, lambda_1, lambda_2):
+def plot_pinn_result(t, u, t_data, u_data, u_pred, epoch, mu, k, lambda_1, lambda_2):
     """
     @author: bmoseley
-    Pretty plot training results
+    Pretty plot pinn discovery and solver training results
     """
     plt.figure(figsize=(8,4))
     
