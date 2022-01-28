@@ -1,3 +1,6 @@
 .ipynb_checkpoints/
 .vs/
 plots/nn/
+plots_lstm/
+plots/pinn_v1/
+plots/pinn/

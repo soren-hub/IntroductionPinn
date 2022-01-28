@@ -1,13 +1,7 @@
 import matplotlib.pyplot as plt
-from PIL import Image
+import PIL.Image
 import os
-from IPython import display
-from IPython.display import Image
 
-def display_gif(path):
-    with open(path,'rb') as f:
-        display(Image(data=f.read(), format='png'))
-        
 
 def mkdir(dir=None,name=None):
     '''
@@ -68,5 +62,5 @@ def save_gif(outfile, files, fps=5, loop=0):
     @author: bmoseley
     Helper function for saving GIFs
     """
-    imgs = [Image.open(file) for file in files]
+    imgs = [PIL.Image.open(file) for file in files]
     imgs[0].save(fp=outfile, format='GIF', append_images=imgs[1:], save_all=True, duration=int(1000/fps), loop=loop)
